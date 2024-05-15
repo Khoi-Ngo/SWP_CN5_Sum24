@@ -46,7 +46,7 @@ public class JWTService {
     }
 
     private Key getSignInKey() {
-        byte[] key = Decoders.BASE64.decode("khoingo");
+        byte[] key = Decoders.BASE64.decode("413F4428472B4B6250655368566D5970337336763979244226452948404D6351");
         return Keys.hmacShaKeyFor(key);
     }
 
