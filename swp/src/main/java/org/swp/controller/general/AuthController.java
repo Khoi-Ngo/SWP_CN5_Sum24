@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.swp.dto.request.RefreshRequest;
 import org.swp.dto.request.SignInRequest;
 import org.swp.dto.request.SignUpRequest;
 import org.swp.dto.response.JwtAuthenticationResponse;
@@ -38,12 +39,23 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody SignInRequest signInRequest) {
-//        try {
-        return ResponseEntity.ok(authenticationService.signIn(signInRequest));
-//        } catch (Exception e) {
-//            logger.error("Error occurred during sign in: " + e.getMessage());
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
+        try {
+            return ResponseEntity.ok(authenticationService.signIn(signInRequest));
+        } catch (Exception e) {
+            logger.error("Error occurred during sign in: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshRequest refreshRequest) {
+        try {
+            return ResponseEntity.ok(authenticationService.refresh(refreshRequest));
+        } catch (Exception e) {
+            logger.error("Error occurred during refresh: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
 }

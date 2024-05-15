@@ -24,4 +24,7 @@ public class HomepageController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    public ResponseEntity<String> sayHello() {
+        return ResponseEntity.ok("Hello World");
+    }
 }
