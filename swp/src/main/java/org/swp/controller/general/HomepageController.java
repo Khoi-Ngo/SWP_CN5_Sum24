@@ -1,4 +1,4 @@
-package org.swp.controller;
+package org.swp.controller.general;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
