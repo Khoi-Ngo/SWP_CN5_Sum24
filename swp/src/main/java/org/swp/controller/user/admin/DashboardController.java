@@ -1,4 +1,4 @@
-package org.swp.controller.admin;
+package org.swp.controller.user.admin;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
