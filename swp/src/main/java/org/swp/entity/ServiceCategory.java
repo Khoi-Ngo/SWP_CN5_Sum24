@@ -7,12 +7,12 @@ import lombok.Data;
 @Data
 @Table(name = "tbl_service_category")
 public class ServiceCategory {
+    //this table may be just refered for SERVICE
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 
 
-    //relationship with the service
+
 }

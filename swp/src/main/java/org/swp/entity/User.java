@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.sql.Update;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import org.swp.enums.UserRole;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -53,5 +55,23 @@ public class User implements UserDetails {
     private String firstName;
     private String lastName;
     private String email;
+    private String phone;
+
+
+    //relationship with PET; BOOKING; SHOP; COMMENT; REPORT
+
+//    //1 - n booking
+//    @OneToMany(cascade = CascadeType.REFRESH)
+//    private Set<Booking> bookings;
+//    //n-n shop
+
+    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "user_shop",
+//            joinColumns = @JoinColumn(name = "userId"),
+//            inverseJoinColumns = @JoinColumn(name = "shopId")
+//    )
+    private Set<Shop> shops;
+
 
 }
