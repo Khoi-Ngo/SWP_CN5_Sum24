@@ -8,7 +8,7 @@ import org.swp.enums.TypePet;
 @Entity
 @Data
 @Table(name = "tbl_service")
-public class Service {
+public class Service extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,11 +18,11 @@ public class Service {
     private double minWeight;
     private double maxWeight;
     private TypePet typePet;
+    private String tags; //regex "tag1 - tag2 - tag3"
     //relationship with BOOKING; COMMENT; SHOP
     @ManyToOne
     private ServiceCategory category;
     @ManyToOne
-//    @JoinColumn(name = "shopId", nullable = false)
     private Shop shop;
 
 

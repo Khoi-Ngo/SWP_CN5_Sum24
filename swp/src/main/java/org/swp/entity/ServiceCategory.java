@@ -6,13 +6,11 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "tbl_service_category")
-public class ServiceCategory {
+public class ServiceCategory extends BaseEntity {
     //this table may be just refered for SERVICE
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-
 
 }

@@ -19,7 +19,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "tbl_user")
-public class User implements UserDetails {
+public class User extends BaseEntity implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -66,11 +66,6 @@ public class User implements UserDetails {
 //    //n-n shop
 
     @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "user_shop",
-//            joinColumns = @JoinColumn(name = "userId"),
-//            inverseJoinColumns = @JoinColumn(name = "shopId")
-//    )
     private Set<Shop> shops;
 
 

@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "tbl_shop")
-public class Shop {
+public class Shop extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,8 +21,4 @@ public class Shop {
 
     //relationship with SHOP_OWNER; MEMBERSHIP; COMMENT, SERVICE
 
-    //    @ManyToMany
-//    private Set<User> users;
-//    @OneToMany
-//    private Set<Service> services;
 }
