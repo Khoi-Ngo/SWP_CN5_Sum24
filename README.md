@@ -14,3 +14,10 @@ https://dev.mysql.com/downloads/mysql
 => whenever you start spring boot: the schema will be created. Therefore, you need some tool for managing database so
 that you can observe the schema.
 whenever you stop the spring boot module: the schema will be dropped
+
+
+
+##Backend team: maybe you will get troubles with database || hibernate ...
+maybe because of direction of relationship in database, please have a look through this article:
+
+https://docs.oracle.com/cd/E19798-01/821-1841/bnbqi/index.html#:~:text=The%20direction%20of%20a%20relationship,has%20only%20an%20owning%20side.
