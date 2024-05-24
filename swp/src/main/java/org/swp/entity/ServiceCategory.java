@@ -10,7 +10,10 @@ public class ServiceCategory extends BaseEntity {
     //this table may be just refered for SERVICE
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    private Integer id;
+    private String categoryName;
+    private String description;
+
+
 
 }

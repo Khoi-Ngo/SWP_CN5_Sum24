@@ -2,9 +2,8 @@ package org.swp.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.swp.enums.TypePet;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,22 +12,23 @@ public class Booking extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    //pet information
-    private String namePet;
-    private double weight;
-    private int petAge;
-    private TypePet typePet;
-    //booking information
-    private LocalDateTime bookingTime;
+    private Integer id;
     @Lob
     private String bookingNote;
     private boolean isDone;
     private boolean isCanceled;
 
-    //relationship with all ( customer, service, shop, ...)
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BookingSlot> bookingSlots ;
+    @ManyToOne
+    private Pet pet;
     @ManyToOne
     private User user;
     @ManyToOne
+    private Shop shop;
+    @ManyToOne
     private Service service;
+
 }

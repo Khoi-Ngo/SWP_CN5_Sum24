@@ -3,7 +3,8 @@ package org.swp.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -11,14 +12,34 @@ import java.util.Set;
 public class Shop extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String shopName;
-    private String address;
-    private String phone;
-    private String email;
-    private String area;
-    private String country;
+    private String shopAddress;//e.g number 5/3 , 10 streeet
+    private String shopPhone;
+    private String shopEmail;
+    private String area;//Thu Duc City || Sai Gon
+    @Lob
+    private String shopDescription;
+    private LocalDateTime openTime;
+    private LocalDateTime closeTime;
+    private boolean isAvailable;
+    //day of week working
+    private String shopTitle;
+    @Lob
+    private String shopProfileImangeUrl;
+    @Lob
+    private String shopCoverImageUrl;
+    private int totalServices;
 
-    //relationship with SHOP_OWNER; MEMBERSHIP; COMMENT, SERVICE
+    //TODO: relationship with Service + Booking + TimeSlot
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Service> serviceList;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TimeSlot> timeSlotList;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Booking> bookingList;
+    @ManyToMany
+    private List<User> userList;
+
 
 }
