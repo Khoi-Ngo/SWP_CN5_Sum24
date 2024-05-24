@@ -19,16 +19,18 @@ public class Booking extends BaseEntity {
     private boolean isCanceled;
 
 
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<BookingSlot> bookingSlots ;
+//    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<BookingSlot> bookingSlots;
+//    @ManyToMany
+//    private List<Pet> pet;
     @ManyToOne
-    private Pet pet;
-    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
+    @JoinColumn(name = "shop_id")
     private Shop shop;
     @ManyToOne
+    @JoinColumn(name = "service_id")
     private Service service;
 
 }

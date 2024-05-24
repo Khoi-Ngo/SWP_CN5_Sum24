@@ -70,10 +70,10 @@ public class User extends BaseEntity implements UserDetails {
 
     //information for CUSTOMER only
     //TODO: relationship with Booking
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Booking> bookings;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Pet> petList;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Booking> bookings;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Pet> petList;
 
 
 }

@@ -32,13 +32,13 @@ public class Shop extends BaseEntity {
     private int totalServices;
 
     //TODO: relationship with Service + Booking + TimeSlot
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Service> serviceList;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<TimeSlot> timeSlotList;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Booking> bookingList;
-    @ManyToMany
+//    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Service> serviceList;
+//    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<TimeSlot> timeSlotList;
+//    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Booking> bookingList;
+    @ManyToMany(mappedBy = "shopList")
     private List<User> userList;
 
 
