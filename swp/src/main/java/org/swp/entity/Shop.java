@@ -12,6 +12,7 @@ import java.util.List;
 public class Shop extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
     private String shopName;
     private String shopAddress;//e.g number 5/3 , 10 streeet
@@ -31,15 +32,9 @@ public class Shop extends BaseEntity {
     private String shopCoverImageUrl;
     private int totalServices;
 
-    //TODO: relationship with Service + Booking + TimeSlot
-//    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Service> serviceList;
-//    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<TimeSlot> timeSlotList;
-//    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Booking> bookingList;
-    @ManyToMany(mappedBy = "shopList")
-    private List<User> userList;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
 }
