@@ -6,10 +6,6 @@
 -> repository (access data from database) -> service (business logic will be here) ->
 controller define API and call service for response after recieve a request
 
--Ông có thể list ra các thuật ngữ của Spring boot mà mình sẽ dùng trong
-dự án được ko?
-
-Chưa ro lắm cái này chatgpt nhe
 
 -Làm sao để kết nối database khi chạy dự án (bên fe sao lấy dc database của mình)
 
@@ -38,3 +34,5 @@ spring:
 -Nếu được thì ông ra chỉ tiêu tui phải code dc j trong tuần tới đi để tui tìm hiểu, học rồi code để push lên git lun
 
 -Read about how to create an RestFul API spring boot
+Tui đã học được: CRUD api bằng postman, login, JWT
+
