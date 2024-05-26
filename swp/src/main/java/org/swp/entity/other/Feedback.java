@@ -3,6 +3,7 @@ package org.swp.entity.other;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.swp.entity.Service;
+import org.swp.entity.ServiceCategory;
 import org.swp.entity.Shop;
 import org.swp.entity.User;
 
@@ -17,8 +18,8 @@ public class Feedback {
     @Lob
     private String content; //TODO: maybe need frontend for encoding the image + string value
 
-    //relation with user
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

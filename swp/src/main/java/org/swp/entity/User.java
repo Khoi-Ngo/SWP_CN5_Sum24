@@ -67,10 +67,6 @@ public class User extends BaseEntity implements UserDetails {
     private String coverImageUrl;
     private LocalDate birthday;
 
-
-    @OneToOne(mappedBy = "user")
-    private Nomination nomination;
-
     @OneToOne(mappedBy = "user")
     private Shop shop;
 }

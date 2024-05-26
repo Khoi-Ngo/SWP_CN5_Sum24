@@ -23,12 +23,9 @@ public class Service extends BaseEntity {
     private String tags; //regex "tag1 - tag2 - tag3"
 
 
-    //TODO: relationship with  BOOKING + CATEGORY
     @ManyToOne
     @JoinColumn(name = "service_category_id")
     private ServiceCategory category;
-//    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Booking> bookingList;
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;

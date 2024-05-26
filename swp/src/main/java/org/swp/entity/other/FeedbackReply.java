@@ -16,7 +16,7 @@ public class FeedbackReply {
     private String content;
 
     //relation with user and the feedback which is replied
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne

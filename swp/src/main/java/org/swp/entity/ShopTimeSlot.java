@@ -13,9 +13,7 @@ public class ShopTimeSlot extends BaseEntity {
     @Lob
     private String description;
 
-    //TODO: relationship with BOOKING SLOT
-//    @OneToMany(mappedBy = "time_slot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<BookingSlot> bookingSlotList;
+
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;

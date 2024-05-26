@@ -3,10 +3,13 @@ package org.swp.configuration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.swp.entity.Shop;
 import org.swp.entity.User;
 import org.swp.enums.UserRole;
-import org.swp.repository.UserRepository;
+import org.swp.repository.IShopRepository;
+import org.swp.repository.IUserRepository;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,10 +17,10 @@ import java.util.List;
 public class DataInit {
 
     @Bean
-    public CommandLineRunner initData(UserRepository userRepository) {
+    public CommandLineRunner initData(IUserRepository IUserRepository, IShopRepository iShopRepository) {
         return args -> {
             // Check if there's any existing data in the database
-            if (userRepository.count() == 0) {
+            if (IUserRepository.count() == 0) {
                 // Create some initial users
                 List<User> initialUsers = Arrays.asList(
                         createUser("admin", "admin", UserRole.ADMIN, "Admin", "User", "admin@example.com"),
@@ -26,7 +29,7 @@ public class DataInit {
                 );
 
                 // Save the initial users to the database
-                userRepository.saveAll(initialUsers);
+                IUserRepository.saveAll(initialUsers);
             }
         };
     }
@@ -41,4 +44,5 @@ public class DataInit {
         user.setEmail(email);
         return user;
     }
+
 }

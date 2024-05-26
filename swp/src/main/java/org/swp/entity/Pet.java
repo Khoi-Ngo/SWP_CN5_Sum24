@@ -22,7 +22,6 @@ public class Pet extends BaseEntity {
     private String petPhoto;
     private String petNote;
 
-    //TODO: relationship with BOOKING
     @ManyToMany
     @JoinTable(
             name = "tbl_pet_booking",

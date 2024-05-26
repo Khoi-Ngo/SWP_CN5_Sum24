@@ -6,13 +6,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.swp.repository.UserRepository;
+import org.swp.repository.IUserRepository;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     @Autowired
-    private final UserRepository userRepository;
+    private final IUserRepository IUserRepository;
 
 
     public UserDetailsService userDetailsService() {
@@ -20,7 +20,7 @@ public class UserService {
 
             @Override
             public UserDetails loadUserByUsername(String username) {
-                return userRepository.findByUsername(username)
+                return IUserRepository.findByUsername(username)
                         .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
             }
 
