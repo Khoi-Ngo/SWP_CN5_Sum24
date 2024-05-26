@@ -2,6 +2,7 @@ package org.swp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.swp.entity.Shop;
+import org.swp.entity.other.Feedback;
 
-public interface IShopRepository extends JpaRepository<Shop, Long> {
+public interface IFeedbackRepository extends JpaRepository<Feedback, Long> {
 }
