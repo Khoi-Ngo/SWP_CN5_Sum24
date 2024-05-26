@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.swp.enums.TypePet;
 
-import java.util.List;
-
 
 @Entity
 @Data
@@ -21,6 +19,7 @@ public class Service extends BaseEntity {
     private double maxWeight;
     private TypePet typePet;
     private String tags; //regex "tag1 - tag2 - tag3"
+    private int nomination;
 
 
     @ManyToOne

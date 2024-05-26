@@ -27,43 +27,43 @@ public class ServiceController {
     @GetMapping("/latest-services")
     public ResponseEntity<?> getLatestServices() {
         //get latest services
-        return serviceService.getLatestServices(ServiceConstantNumber.NUMBER_OF_LATEST_SERVICES.getValue());
+        return ResponseEntity.ok(serviceService.getLatestServices(ServiceConstantNumber.NUMBER_OF_LATEST_SERVICES.getValue()));
     }
 
     @GetMapping("/most-rcmd-services")
     public ResponseEntity<?> getMostRcmdServices() {
         //get most recommended services
-        return serviceService.getMostRcmdServices(ServiceConstantNumber.NUMBER_OF_LATEST_SERVICES.getValue());
+        return ResponseEntity.ok(serviceService.getMostRcmdServices(ServiceConstantNumber.NUMBER_OF_LATEST_SERVICES.getValue()));
     }
 
     @GetMapping("/most-rcmd-dog-services")
     public ResponseEntity<?> getMostRcmdDogServices() {
         //get most recommended dog services
-        return serviceService.getMostRcmdServices(TypePet.DOG, ServiceConstantNumber.NUMBER_OF_MOST_RCMD_SERVICES.getValue());
+        return ResponseEntity.ok(serviceService.getMostRcmdServices(TypePet.DOG, ServiceConstantNumber.NUMBER_OF_MOST_RCMD_SERVICES.getValue()));
     }
 
     @GetMapping("/most-rcmd-cat-services")
     public ResponseEntity<?> getMostRcmdCatServices() {
         //get most recommended cat services
-        return serviceService.getMostRcmdServices(TypePet.CAT, ServiceConstantNumber.NUMBER_OF_MOST_RCMD_SERVICES.getValue());
+        return ResponseEntity.ok(serviceService.getMostRcmdServices(TypePet.CAT, ServiceConstantNumber.NUMBER_OF_MOST_RCMD_SERVICES.getValue()));
     }
 
     @GetMapping("/category-services")
     public ResponseEntity<?> getAllCategoryServices() {
         //get all category services
-        return categoryServiceService.getAll();
+        return ResponseEntity.ok(categoryServiceService.getAll());
     }
 
     @GetMapping("/services")
     public ResponseEntity<?> getAllServices() {
         //get all services
-        return serviceService.getAll();
+        return ResponseEntity.ok(serviceService.getAll());
     }
 
     @GetMapping("/service/{id}")
     public ResponseEntity<?> getServiceById(@PathVariable("id") int id) {
         //get a single service
-        return serviceService.getServiceById(id);
+        return ResponseEntity.ok(serviceService.getServiceById(id));
     }
 
 
