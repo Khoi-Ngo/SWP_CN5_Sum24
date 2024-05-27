@@ -2,6 +2,7 @@ package org.swp.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.swp.enums.BookingStatus;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Booking extends BaseEntity {
     private String bookingNote;
     private boolean isDone;
     private boolean isCanceled;
+    private BookingStatus status;
 
 
     @ManyToOne

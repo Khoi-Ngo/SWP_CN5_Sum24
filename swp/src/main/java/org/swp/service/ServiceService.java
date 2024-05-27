@@ -17,9 +17,8 @@ public class ServiceService {
         return serviceRepository.findAll();
     }
 
-    public org.swp.entity.Service getServiceById(long id) {
-        Optional<org.swp.entity.Service> serviceOptional = serviceRepository.findById(id);
-        return serviceOptional.orElse(null); // Return null if service is not found
+    public org.swp.entity.Service getServiceById(int id) {
+        return serviceRepository.findById(id).orElse(null); // Return null if service is not found
     }
 
     public List<org.swp.entity.Service> getMostRcmdServices(TypePet typePet, int numberOfRecords) {

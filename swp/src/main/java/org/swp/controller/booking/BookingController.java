@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.swp.dto.request.RequestBookingRequest;
+import org.swp.dto.request.RequestCancelBookingRequest;
 import org.swp.service.BookingService;
 import org.swp.util.SecurityUtil;
 
@@ -29,22 +31,22 @@ public class BookingController {
         String userName = SecurityUtil.getUserName(SecurityContextHolder.getContext());
         return Objects.nonNull(userName) ?
                 ResponseEntity.ok(bookingService.getAllBookings(userName))
-                : ResponseEntity.status(HttpStatus.FORBIDDEN);
+                : ResponseEntity.status(HttpStatus.FORBIDDEN).body("User not authenticated");
     }
 
     @PostMapping
     public ResponseEntity<?> createBooking(@RequestBody RequestBookingRequest request) {
-        return bookingService.createBookingRequest(request);
+        return ResponseEntity.ok(bookingService.createBookingRequest(request));
     }
 
     @DeleteMapping
     public ResponseEntity<?> cancelBooking(@RequestBody RequestCancelBookingRequest request) {
-        return bookingService.cancelBookingRequest(request);
+        return ResponseEntity.ok(bookingService.cancelBookingRequest(request));
     }
 
     @GetMapping("{id}")
     public ResponseEntity<?> getBookingById(@PathVariable("id") int id) {
-        return bookingService.getBookingById(id);
+        return ResponseEntity.ok(bookingService.getBookingById(id));
     }
 
 

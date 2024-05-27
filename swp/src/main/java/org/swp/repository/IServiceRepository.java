@@ -10,7 +10,7 @@ import org.swp.enums.TypePet;
 import java.util.List;
 
 @Repository
-public interface IServiceRepository extends JpaRepository<Service, Long> {
+public interface IServiceRepository extends JpaRepository<Service, Integer> {
     @Query(value = "SELECT s FROM tbl_service s ORDER BY createdTime DESC LIMIT :numberOfRecords", nativeQuery = true)
     List<Service> findLatestServices(@Param("numberOfRecords") int numberOfRecords);
 
