@@ -1,5 +1,9 @@
 package org.swp.dto.request;
 
-public class RequestAcceptBooking {
-    //TODO: DTO REQUEST FOR SHOP ACCEPT THE BOOKING REQUEST FROM CUSTOMER
+import lombok.Data;
+
+@Data
+public class RequestAcceptBooking {//used for customer/shop-owner accept changing  of status or other stuffs of booking (e.g: date, number, ...)
+    private int bookingId;
+    private String additionalMessage;
 }

@@ -45,7 +45,11 @@ public class ServiceController {
     @GetMapping("/most-rcmd-cat-services")
     public ResponseEntity<?> getMostRcmdCatServices() {
         //get most recommended cat services
-        return ResponseEntity.ok(serviceService.getMostRcmdServices(TypePet.CAT, ServiceConstantNumber.NUMBER_OF_MOST_RCMD_SERVICES.getValue()));
+        return ResponseEntity.ok(
+                serviceService
+                        .getMostRcmdServices(
+                                TypePet.CAT
+                                , ServiceConstantNumber.NUMBER_OF_MOST_RCMD_SERVICES.getValue()));
     }
 
     @GetMapping("/category-services")

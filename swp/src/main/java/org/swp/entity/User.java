@@ -2,9 +2,11 @@ package org.swp.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -52,6 +54,8 @@ public class User extends BaseEntity implements UserDetails {
     private Integer id;
 
     //account information
+    @NotNull
+    @Column(unique = true)
     private String username;
     private String password;
     private UserRole role;

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.swp.dto.request.RequestAcceptBooking;
 import org.swp.dto.request.RequestBookingRequest;
 import org.swp.dto.request.RequestCancelBookingRequest;
 import org.swp.service.BookingService;
@@ -36,12 +37,17 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<?> createBooking(@RequestBody RequestBookingRequest request) {
-        return ResponseEntity.ok(bookingService.createBookingRequest(request));
+        return ResponseEntity.ok(bookingService.createBooking(request));
     }
 
     @DeleteMapping
     public ResponseEntity<?> cancelBooking(@RequestBody RequestCancelBookingRequest request) {
-        return ResponseEntity.ok(bookingService.cancelBookingRequest(request));
+        return ResponseEntity.ok(bookingService.cancel(request));
+    }
+
+    @PostMapping("/accept")
+    public ResponseEntity<?> acceptAction(@RequestBody RequestAcceptBooking request) {
+        return ResponseEntity.ok(bookingService.accept(request));
     }
 
     @GetMapping("{id}")

@@ -22,7 +22,7 @@ public class Booking extends BaseEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "customer_id")
     private User user;
     @ManyToOne
     @JoinColumn(name = "shop_id")

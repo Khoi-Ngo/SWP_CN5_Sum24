@@ -1,5 +1,10 @@
 package org.swp.dto.request;
 
+import lombok.Data;
+
+@Data
 public class RequestCancelBookingRequest {
-    //TODO: DTO REQUEST FOR CUSTOMER SEND CANCEL REQUEST FOR SHOP
+    //from both sides to each other (cus -> shop || shop -> cus)
+    private int bookingId;
+    private String additionalMessage;
 }

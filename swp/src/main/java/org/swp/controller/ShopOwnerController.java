@@ -35,9 +35,9 @@ public class ShopOwnerController {
         return ResponseEntity.ok(bookingService.getBookingById(id));
     }
 
-    @PutMapping("/booking/accept")
-    public ResponseEntity<?> acceptBooking(@RequestBody RequestAcceptBooking request) {
-        return ResponseEntity.ok(bookingService.acceptBooking(request));
+    @PostMapping("/booking/accept")
+    public ResponseEntity<?> acceptAction(@RequestBody RequestAcceptBooking request) {
+        return ResponseEntity.ok(bookingService.accept(request));
     }
 
 }
