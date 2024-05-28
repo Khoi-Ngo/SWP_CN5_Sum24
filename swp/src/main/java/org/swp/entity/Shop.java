@@ -31,6 +31,7 @@ public class Shop extends BaseEntity {
     @Lob
     private String shopCoverImageUrl;
     private int totalServices;
+    private int nomination;
 
 
     @OneToOne(cascade = CascadeType.ALL)

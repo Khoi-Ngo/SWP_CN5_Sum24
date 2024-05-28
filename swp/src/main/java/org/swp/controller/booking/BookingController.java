@@ -16,7 +16,7 @@ import org.swp.util.SecurityUtil;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("/api/v1/customer/booking")
 public class BookingController {
 
 
@@ -29,7 +29,8 @@ public class BookingController {
     @GetMapping
     public ResponseEntity<?> getAllBookings() {
         //get all bookings for a specified customer
-        String userName = SecurityUtil.getUserName(SecurityContextHolder.getContext());
+//        String userName = SecurityUtil.getUserName(SecurityContextHolder.getContext());
+        String userName = null;
         return Objects.nonNull(userName) ?
                 ResponseEntity.ok(bookingService.getAllBookings(userName))
                 : ResponseEntity.status(HttpStatus.FORBIDDEN).body("User not authenticated");
@@ -37,6 +38,7 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<?> createBooking(@RequestBody RequestBookingRequest request) {
+        //TODO : take care relationship in the databases
         return ResponseEntity.ok(bookingService.createBooking(request));
     }
 
@@ -47,12 +49,19 @@ public class BookingController {
 
     @PostMapping("/accept")
     public ResponseEntity<?> acceptAction(@RequestBody RequestAcceptBooking request) {
-        return ResponseEntity.ok(bookingService.accept(request));
+        try {
+            return ResponseEntity.ok(bookingService.accept(request));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @GetMapping("{id}")
     public ResponseEntity<?> getBookingById(@PathVariable("id") int id) {
-        return ResponseEntity.ok(bookingService.getBookingById(id));
+        Object responseData = bookingService.getBookingById(id);
+        return Objects.nonNull(responseData) ? ResponseEntity.ok(responseData)
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 

@@ -33,12 +33,16 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("api/v1/**").permitAll()
-                        .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("api/v1/admin").hasAnyAuthority(UserRole.ADMIN.name())
-                        .requestMatchers("api/v1/shop-owner").hasAnyAuthority(UserRole.SHOP_OWNER.name())
-                        .requestMatchers("api/v1/customer").hasAnyAuthority(UserRole.CUSTOMER.name())
-                        .anyRequest().authenticated())
+
+//                        .requestMatchers("api/v1/**").permitAll()
+//                        .requestMatchers("/api/v1/auth/**").permitAll()
+//                        .requestMatchers("api/v1/admin").hasAnyAuthority(UserRole.ADMIN.name())
+//                        .requestMatchers("api/v1/shop-owner").hasAnyAuthority(UserRole.SHOP_OWNER.name())
+//                        .requestMatchers("api/v1/customer").hasAnyAuthority(UserRole.CUSTOMER.name())
+//                        .anyRequest().authenticated()
+                                .anyRequest().permitAll()
+
+                )
 
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(

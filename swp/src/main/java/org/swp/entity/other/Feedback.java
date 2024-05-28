@@ -16,7 +16,7 @@ public class Feedback {
     private Integer id;
 
     @Lob
-    private String content; //TODO: maybe need frontend for encoding the image + string value
+    private String content;
 
 
     @ManyToOne

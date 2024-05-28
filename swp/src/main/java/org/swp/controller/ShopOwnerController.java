@@ -23,8 +23,8 @@ public class ShopOwnerController {
 
     @GetMapping("/bookings")
     public ResponseEntity<?> getAllBookings() {
-        //get all bookings for a specified shop-owner
-        String userName = SecurityUtil.getUserName(SecurityContextHolder.getContext());
+//        String userName = SecurityUtil.getUserName(SecurityContextHolder.getContext());
+        String userName = null;
         return Objects.nonNull(userName) ?
                 ResponseEntity.ok(bookingService.getAllBookings(userName))
                 : ResponseEntity.status(HttpStatus.FORBIDDEN).body("User not authenticated");

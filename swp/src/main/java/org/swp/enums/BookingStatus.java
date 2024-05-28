@@ -1,12 +1,12 @@
 package org.swp.enums;
 
 public enum BookingStatus {
-    WAIT_FOR_SHOP_OWNER_ACCEPT_CANCEL("Waiting for shop owner to accept cancellation"),
-    WAIT_FOR_SHOP_OWNER_ACCEPT_BOOKING("Waiting for shop owner to accept booking"),
+    WAIT_FOR_SHOP_OWNER_ACCEPT("Waiting for shop owner to accept"),
+    WAIT_FOR_CUSTOMER_ACCEPT("Waiting for customer to accept"),
     ACCEPTED("Booking accepted"),
     CANCELLED("Booking cancelled"),
     DONE("Booking done"),
-    REJECTED("Booking rejected by shop owner");
+    REJECTED("Booking rejected");
 
     private final String description;
 

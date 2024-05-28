@@ -18,7 +18,7 @@ public class Booking extends BaseEntity {
     private String bookingNote;
     private boolean isDone;
     private boolean isCanceled;
-    private BookingStatus status;
+    private String status;
 
 
     @ManyToOne

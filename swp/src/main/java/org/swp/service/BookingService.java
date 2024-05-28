@@ -1,12 +1,16 @@
 package org.swp.service;
 
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.swp.controller.booking.BookingController;
 import org.swp.dto.request.RequestAcceptBooking;
 import org.swp.dto.request.RequestBookingRequest;
 import org.swp.dto.request.RequestCancelBookingRequest;
 import org.swp.entity.Booking;
+import org.swp.enums.BookingStatus;
 import org.swp.enums.UserRole;
 import org.swp.repository.IBookingRepository;
 import org.swp.repository.IUserRepository;
@@ -19,6 +23,8 @@ public class BookingService {
     private IUserRepository userRepository;
     @Autowired
     private ModelMapper modelMapper;
+    private static final Logger logger = LoggerFactory.getLogger(BookingService.class);
+
 
     public Object getAllBookings(String userName) {
         return isCustomer(userName) ?
@@ -36,7 +42,6 @@ public class BookingService {
 
     public Object createBooking(RequestBookingRequest request) {
         Booking boking = modelMapper.map(request, Booking.class);
-        //TODO : take care relationship in the databases
         return bookingRepository.save(boking);
     }
 
@@ -48,9 +53,16 @@ public class BookingService {
 
     public Object accept(RequestAcceptBooking request) {
         //change status only
+        Booking booking = bookingRepository.findById(request.getBookingId()).orElse(null);
+        String status = booking.getStatus();
         //WAIT FOR CUSTOMER -> ACCEPTED
         //WAIT FOR SHOP-OWNER -> ACCEPTED
-        return null;
+        if (status.equals(BookingStatus.WAIT_FOR_SHOP_OWNER_ACCEPT.getDescription())
+                || status.equals(BookingStatus.WAIT_FOR_CUSTOMER_ACCEPT.getDescription())) {
+            booking.setStatus(BookingStatus.ACCEPTED.getDescription());
+            return "Accept booking successfully";
+        }
+        return "Unidentified booking status";
     }
 
     public Object deny(RequestAcceptBooking request) {

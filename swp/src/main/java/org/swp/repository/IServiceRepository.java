@@ -11,14 +11,14 @@ import java.util.List;
 
 @Repository
 public interface IServiceRepository extends JpaRepository<Service, Integer> {
-    @Query(value = "SELECT s FROM tbl_service s ORDER BY createdTime DESC LIMIT :numberOfRecords", nativeQuery = true)
+    @Query(value = "SELECT * FROM tbl_service  ORDER BY created_time DESC LIMIT :numberOfRecords", nativeQuery = true)
     List<Service> findLatestServices(@Param("numberOfRecords") int numberOfRecords);
 
-    @Query(value = "SELECT s FROM tbl_service s ORDER BY nomination DESC LIMIT :numberOfRecords", nativeQuery = true)
+    @Query(value = "SELECT * FROM tbl_service  ORDER BY nomination DESC LIMIT :numberOfRecords", nativeQuery = true)
     List<Service> findMostRcmdServices(@Param("numberOfRecords") int numberOfRecords);
 
 
-    @Query(value = "SELECT s FROM tbl_service s WHERE typePet = :typePet ORDER BY nomination DESC LIMIT :numberOfRecords", nativeQuery = true)
+    @Query(value = "SELECT * FROM tbl_service  WHERE type_pet = :typePet ORDER BY nomination DESC LIMIT :numberOfRecords", nativeQuery = true)
     List<Service> findMostRcmdServices(@Param("typePet") TypePet typePet, @Param("numberOfRecords") int numberOfRecords);
 
 }
