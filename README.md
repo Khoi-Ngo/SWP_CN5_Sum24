@@ -21,3 +21,12 @@ whenever you stop the spring boot module: the schema will be dropped
 maybe because of direction of relationship in database, please have a look through this article:
 
 https://docs.oracle.com/cd/E19798-01/821-1841/bnbqi/index.html#:~:text=The%20direction%20of%20a%20relationship,has%20only%20an%20owning%20side.
+
+```properties
+spring_profiles__active=prod
+PROD_DB_HOST=monorail.proxy.rlwy.net
+PROD_DB_PORT=11154
+PROD_DB_NAME=railway
+PROD_DB_PASSWORD=SNrhenxeQFsQlFwZiCijovRFFGFCfyUu
+PROD_DB_USERNAME=root
+```
